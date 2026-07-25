@@ -8,5 +8,6 @@ Current it allows:
 * iMessage
 * Google RCS
 * Signal
+* Facebook Messenger
 
 Only texts are allowed. Larger media (e.g. photos, videos, etc.) are blocked.
