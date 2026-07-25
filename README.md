@@ -9,5 +9,6 @@ Current it allows:
 * Google RCS
 * Signal
 * Facebook Messenger
+* Telegram
 
 Only texts are allowed. Larger media (e.g. photos, videos, etc.) are blocked.
