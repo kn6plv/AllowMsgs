@@ -19,7 +19,10 @@ nft -a list chain inet fw4 dstnat 2>/dev/null | grep 'comment "allow-msgs"' | se
 # Everything else will be dropped.
 #
 nft -f - <<__EOF__
-
+#
+# This is a dummy we need because the first time these wont exist and so the flush/delete
+# rules would fail, which makes this whole thing fail.
+#
 table inet fw4 {
 	chain msg_out {
 	}
@@ -38,6 +41,9 @@ table inet fw4 {
 	}
 }
 
+#
+# Clean away the old
+#
 flush chain inet fw4 msg_out
 flush chain inet fw4 msg_in
 flush set inet fw4 throttle443_in
@@ -47,6 +53,9 @@ delete chain inet fw4 msg_in
 delete set inet fw4 throttle443_in
 delete set inet fw4 throttle443_out
 
+#
+# Setup the new filters
+#
 table inet fw4 {
 	set msg_okay {
 		type ipv4_addr;
@@ -84,11 +93,15 @@ table inet fw4 {
 	}
 }
 
-# Hook out filter rules into the forward chain
+#
+# Hook our filter rules into the forward chain
+#
 insert rule inet fw4 forward iifname "br-lan" counter jump msg_out comment "allow-msgs"
 insert rule inet fw4 forward oifname "br-lan" counter jump msg_in comment "allow-msgs"
 
+#
 # Add a DNS hijack hook
+#
 insert rule inet fw4 dstnat iifname "br-lan" ip daddr != $DNS_IP udp dport 53 counter dnat ip to $DNS_IP comment "allow-msgs"
 insert rule inet fw4 dstnat iifname "br-lan" ip daddr != $DNS_IP tcp dport 53 counter dnat ip to $DNS_IP comment "allow-msgs"
 
