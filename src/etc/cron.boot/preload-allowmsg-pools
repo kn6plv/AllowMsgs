@@ -42,6 +42,13 @@ service.ess.apple.com
 chat.signal.org
 edge-mqtt.facebook.com
 mqtt-mini.facebook.com
+slack.com
+edgeapi.slack.com
+wss-primary.slack.com
+wss-backup.slack.com
+wss-mobile.slack.com
+gateway.discord.gg
+discord.com
 captive.apple.com
 captive.g.aaplimg.com
 "

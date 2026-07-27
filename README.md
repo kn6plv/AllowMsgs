@@ -10,5 +10,7 @@ Current it allows:
 * Signal
 * Facebook Messenger
 * Telegram
+* Slack
+* Discord
 
 Only texts are allowed. Larger media (e.g. photos, videos, etc.) are blocked.
