@@ -1,4 +1,4 @@
-AREDN LAN Message Firewall
+AREDN Message Firewall
 ===
 
 An AREDN LAN based firewall filter which restricts the use of the AREDN LAN network to only texting/messaging apps.
