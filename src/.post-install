@@ -1,4 +1,4 @@
 #!/bin/sh
 /etc/init.d/firewall restart
 /etc/init.d/dnsmasq restart
-/etc/cron.boot/preload-allowmsg-pools
+/etc/cron.hourly/preload-allowmsg-pools
